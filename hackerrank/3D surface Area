@@ -1,0 +1,49 @@
+int surfaceArea(vector<vector<int>> A) {
+    int sur_area = 0;
+    for (int i=0; i < A.size(); i++) {
+        for (int j=0; j<A[i].size(); j++) {
+            for (int k = 0; k < A[i][j]; k++) {
+                if (k == 0) {
+                    sur_area++; // Bottom
+                }
+                if (i==0) {
+                    sur_area++; // up
+                } else {
+                    if (A[i-1][j] < (k+1)) {
+                        sur_area++; // up
+                    }
+                }
+
+                if (i== A.size()-1) {
+                    sur_area++; // down
+                } else {
+                    if (A[i+1][j] < (k+1)) {
+                        sur_area++; // down
+                    }
+                }
+
+                if (j== 0) {
+                    sur_area++; // left
+                } else {
+                    if (A[i][j-1] < (k+1)) {
+                        sur_area++; // left
+                    }
+                }
+
+                 if (j== A[i].size()-1) {
+                    sur_area++; // right
+                } else {
+                    if (A[i][j+1] < (k+1)) {
+                        sur_area++; // right
+                    }
+                }                   
+                
+                if (k ==A[i][j]-1) {
+                    sur_area++; // top;
+                }
+                
+            }
+        }
+    }
+    return sur_area;    
+}
