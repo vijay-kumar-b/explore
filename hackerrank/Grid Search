@@ -1,0 +1,27 @@
+// Complete the gridSearch function below.
+string gridSearch(vector<string> G, vector<string> P) {
+    for (int i=0; i<G.size(); i++) {
+        std::size_t pos = G[i].find(P[0]);
+        if (pos != string::npos) {
+            while(pos != string::npos) {
+                int k;
+                int j=i;
+                for (k = 0; k<P.size(), j<G.size();k++, j++) {
+                    string sub = G[j].substr(pos, P[0].size());
+                    if (sub.find(P[k]) == string::npos) {
+                        break;
+                    }
+                }
+                if (k == P.size()) {
+                    return "YES";
+                }
+                if (pos+1 < G[0].size()) {
+                    pos = G[i].find(P[0], pos+1);
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    return "NO";
+}
