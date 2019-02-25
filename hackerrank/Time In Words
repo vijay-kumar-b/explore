@@ -1,0 +1,31 @@
+string name[] = {
+"zero", "one", "two", "three", "four", 
+"five", "six", "seven", "eight", "nine", 
+"ten", "eleven", "twelve", "thirteen", "fourteen",
+"fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+"twenty", "twenty one", "twenty two", "twenty three", "twenty four", 
+"twenty five", "twenty six", "twenty seven", "twenty eight", "twenty nine", 
+"thirty"};
+
+
+// Complete the timeInWords function below.
+string timeInWords(int h, int m) {
+    string res;
+    if (m ==0) {
+        res = name[h] + " o' clock";
+    } else if (m == 15) {
+        res = "quarter past "+name[h];
+    } else if (m == 30) {
+        res = "half past "+name[h];
+    } else if (m == 45) {
+        res = "quarter to " + (name[(h+1)%12]);
+    } else if (m > 30) {
+        string xs = (m == 59)?"":"s";
+        res = name[60-m] +" minute"+xs+ " to " + (name[(h+1)%12]);
+    } else {
+        string xs = (m == 1)?"":"s";
+
+        res = name[m] +" minute"+xs+ " past " + (name[h]);
+    }
+    return res;
+}
